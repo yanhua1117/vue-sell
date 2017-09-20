@@ -22,35 +22,33 @@ var proxyTable = config.dev.proxyTable
 
 var app = express()
 
-var appData = require('../data.json');
-var seller = appData.seller;
-var goods = appData.goods;
-var ratings = appData.ratings;
+var apiData = require('../data.json');
+var goods = apiData.goods;
+var ratings = apiData.ratings;
+var sellers = apiData.seller;
 
 var apiRoutes = express.Router();
 
-apiRoutes.get('/seller',function(req,res){
-  res.json({
-    errno:0,
-    data:seller
-  });
-});
+apiRoutes.get("/goods",function(req,res){
+    res.json({
+        errno : 0,
+        data : goods
+    })
+})
+apiRoutes.get("/ratings",function(req,res){
+    res.json({
+        errno : 0,
+        data : ratings
+    })
+})
+apiRoutes.get("/seller",function(req,res){
+    res.json({
+        errno : 0,
+        data : sellers
+    })
+})
 
-apiRoutes.get('/goods',function(req,res){
-  res.json({
-    errno:0,
-    data:goods
-  });
-});
-
-apiRoutes.get('/ratings',function(req,res){
-  res.json({
-    errno:0,
-    data:ratings
-  });
-});
-
-app.use('/api',apiRoutes);
+app.use("/api",apiRoutes);
 
 var compiler = webpack(webpackConfig)
 
@@ -60,8 +58,7 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
-  log: false,
-  heartbeat: 2000
+  log: () => {}
 })
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
