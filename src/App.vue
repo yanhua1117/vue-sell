@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+  	<!--渲染数据-->
     <v-header :seller="seller"></v-header>
     <div class="tab">
         <div class="tab-item">
@@ -9,7 +10,7 @@
             <router-link to="/ratings">评价</router-link>
         </div>
         <div class="tab-item">
-            <router-link to="/sellers">商家</router-link>
+            <router-link to="/seller">商家</router-link>
         </div>
     </div>
     <keep-alive>
@@ -18,7 +19,7 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
     import header from './components/header/header.vue';
     // document.addEventListener('touchstart',function(ev){ 
     //     ev.preventDefault();
@@ -26,11 +27,22 @@
     
     const ERR_OK = 0;
     
-    export default{
+    export default {
+    	//获取到data中的商家信息
         data() {
-        	return {
-        		sellers:{}
-        	};
+            return {
+                seller : {}
+            }
+        },
+        created() {
+        	//参考vue-resource的github，获取seller数据
+        	this.$http.get('/api/seller').then((response) => {
+        		response = response.body;
+//      			console.log(response);
+        		if(response.errno === ERR_OK) {
+        			this.seller = response.data;
+        		}
+        	});
         },
         components : {
             "v-header":header

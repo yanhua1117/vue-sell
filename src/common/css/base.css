@@ -1,0 +1,19 @@
+html,
+body {
+  line-height: 1;
+  font-weight: 200;
+  font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+  height: 100%;
+}
+/*2倍和3倍图片*/
+.clearfix {
+  display: inline-block;
+}
+.clearfix::after {
+  display: block;
+  content: '.';
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  clear: both;
+}

@@ -3,12 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import goods from './components/goods/goods'
 import ratings from './components/ratings/ratings'
-import sellers from './components/sellers/sellers'
+import seller from './components/seller/seller'
 
 
 Vue.use(VueRouter);
+Vue.use(VueResource);
 
 // 引入需要打包的外部样式
 //import './common/css/icon.css'
@@ -40,8 +42,8 @@ const routes = [
     	component: ratings
     },
     {
-    	path: '/sellers',
-    	component: sellers
+    	path: '/seller',
+    	component: seller
     }
 ]
 const router = new VueRouter({
