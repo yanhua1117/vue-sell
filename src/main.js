@@ -13,8 +13,8 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 
 // 引入需要打包的外部样式
-//import './common/css/icon.css'
-//require('!style-loader!css-loader!less-loader!./common/css/icon.less');
+import './common/css/icon.less'
+require('!style-loader!css-loader!less-loader!./common/css/icon.less');
 
 //let app = Vue.extend(App);
 //

@@ -14,7 +14,7 @@
         </div>
     </div>
     <keep-alive>
-        <router-view ></router-view>
+        <router-view :seller="seller"></router-view>
     </keep-alive>
   </div>
 </template>
@@ -51,7 +51,7 @@
 </script>
 
 <style lang="less">
-		@import "./common/css/base.less";
+	@import "./common/css/base.less";
     .tab{
         display: flex;
         position:relative;
